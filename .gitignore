@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+payroll-system/node_modules/
+
+# Builds and production outputs
+payroll-system/build/
+*.log
+
+# Environment files and credentials
+.env
+backend/.env
+payroll-system/.env.local
+payroll-system/.env.development.local
+payroll-system/.env.test.local
+payroll-system/.env.production.local
+
+# Backups
+.git_backup/
+payroll-system/.git_backup/

@@ -1,0 +1,505 @@
+/* ================= GLOBAL ================= */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #eef2f7, #ffffff);
+  overflow-x: hidden;
+  transition: background 0.3s ease;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar-container {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.2);
+}
+
+.logo-text {
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* Sidebar links */
+
+.sidebar-link {
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white !important;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateX(6px);
+}
+
+/* Active link */
+
+.active-link {
+  background: rgba(255,255,255,0.25);
+  font-weight: bold;
+}
+
+/* Logout */
+
+.logout-btn {
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= MAIN CONTENT ================= */
+
+.main-content {
+  margin-left: 260px;
+  padding: 30px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  animation: fadeInUp 0.4s ease;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* ================= STAT CARDS ================= */
+
+.stat-card {
+  border-radius: 12px;
+  color: white;
+}
+
+.stat-card-blue {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+}
+
+.stat-card-green {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+.stat-card-purple {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+.stat-card-dark {
+  background: linear-gradient(135deg, #6aa7c6, #414345);
+}
+
+.stat-title {
+  font-size: 14px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stat-icon {
+  font-size: 36px;
+}
+
+/* ================= CALENDAR ================= */
+
+.calendar-card {
+  width: 550px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.present-date {
+  background: #2ecc71 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.absent-date {
+  background: #e74c3c !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+/* ================= DARK MODE ================= */
+
+.dark body {
+  background: #121212;
+}
+
+.dark .main-content {
+  background: #121212;
+  color: white;
+}
+
+.dark .card {
+  background: #1e1e1e;
+  color: white;
+}
+
+.dark .calendar-card {
+  background: #1e1e1e;
+  color: white;
+}
+
+.dark .sidebar-container {
+  background: linear-gradient(180deg, #000000, #1a1a1a);
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeInUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+/* LOGIN PAGE */
+
+.login-page {
+
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #667eea,
+    #764ba2,
+    #6a11cb,
+    #2575fc
+  );
+
+  background-size: 300% 300%;
+
+  animation: gradientMove 8s ease infinite;
+
+}
+
+@keyframes gradientMove {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+
+/* CARD */
+
+.login-card {
+
+  width: 360px;
+
+  padding: 30px;
+
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.15);
+
+
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
+  animation: fadeUp 0.7s ease;
+
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* ICON */
+
+.login-icon {
+
+  font-size: 50px;
+  text-align: center;
+  color: white;
+
+}
+
+
+/* TITLE */
+
+.login-title {
+
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+
+}
+
+
+/* INPUT */
+
+.login-input {
+
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+
+}
+
+
+/* BUTTON */
+
+.login-btn {
+
+  background: linear-gradient(135deg,#36d1dc,#5b86e5);
+
+  border: none;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  font-weight: bold;
+
+  transition: 0.3s;
+
+}
+
+.login-btn:hover {
+
+  transform: scale(1.05);
+
+}
+
+
+/* INFO */
+
+.login-info {
+
+  margin-top: 15px;
+
+  text-align: center;
+
+  color: white;
+
+  font-size: 14px;
+
+}
+
+/* ================= HRMS UPGRADE STYLES ================= */
+
+/* AI Assistant & Chatbot */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  min-height: 400px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.dark .chat-window {
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chat-bubble {
+  max-width: 75%;
+  padding: 12px 18px;
+  border-radius: 18px;
+  position: relative;
+  animation: slideIn 0.3s ease;
+  line-height: 1.5;
+}
+
+.chat-bubble-ai {
+  background: #f1f3f5;
+  color: #212529;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.dark .chat-bubble-ai {
+  background: #2c2c2c;
+  color: #f1f3f5;
+}
+
+.chat-bubble-user {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .chat-input-area {
+  background: rgba(40, 40, 40, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Star Ratings */
+.star-rating {
+  display: flex;
+  gap: 5px;
+  color: #ffc107;
+  font-size: 1.25rem;
+}
+
+.star-rating .bi-star-fill, .star-rating .bi-star {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.star-rating .bi-star-fill:hover, .star-rating .bi-star:hover {
+  transform: scale(1.2);
+}
+
+/* Certificate Generator Frame */
+.certificate-preview-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  animation: fadeInUp 0.5s ease;
+}
+
+.certificate-frame {
+  width: 100%;
+  max-width: 700px;
+  padding: 40px;
+  border: 15px double #c5a059;
+  background: #fdfbf7;
+  color: #2c3e50;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  position: relative;
+}
+
+.dark .certificate-frame {
+  background: #fdfbf7; /* Keep certificate light colored for realistic printing */
+  color: #2c3e50;
+}
+
+.certificate-seal {
+  width: 90px;
+  height: 90px;
+  margin: 15px auto;
+  background: radial-gradient(circle, #e6c875 0%, #c5a059 100%);
+  border-radius: 50%;
+  border: 4px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+/* Shift and Policy Cards */
+.shift-card {
+  border-left: 5px solid #5b86e5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shift-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.policy-list-item {
+  transition: background-color 0.2s ease;
+}
+
+.policy-list-item:hover {
+  background-color: rgba(91, 134, 229, 0.08) !important;
+}
+
+/* Keyframes */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsiveness overrides for Mobile/Tablet viewports */
+@media (max-width: 992px) {
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-top: 75px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+

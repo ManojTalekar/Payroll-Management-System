@@ -1,0 +1,9 @@
+{
+  "watch": ["."],
+  "ignore": [
+    "../payroll-system/*",
+    "node_modules",
+    "uploads"
+  ],
+  "ext": "js,json"
+}
