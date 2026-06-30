@@ -5,8 +5,9 @@ const Holiday = require("../models/Holiday");
 const Company = require("../models/Company");
 const Document = require("../models/Document");
 const fs = require("fs");
-const path = require("fs");
-const { uploadToCloudinary } = require("../middleware/uploadMiddleware");
+const path = require("path");
+const Announcement = require("../models/Announcement");
+const { uploadToCloudinary } = require("../services/cloudinaryService");
 
 // ==========================================
 // 1. DEPARTMENTS
@@ -244,6 +245,37 @@ const deleteDocument = async (req, res, next) => {
   }
 };
 
+// ==========================================
+// 7. ANNOUNCEMENTS
+// ==========================================
+const getAnnouncements = async (req, res, next) => {
+  try {
+    const announcements = await Announcement.find().sort({ createdAt: -1 });
+    res.json({ success: true, data: announcements });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const createAnnouncement = async (req, res, next) => {
+  const { title, content, type, date } = req.body;
+  try {
+    const announcement = await Announcement.create({ title, content, type, date });
+    res.status(201).json({ success: true, data: announcement });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const deleteAnnouncement = async (req, res, next) => {
+  try {
+    await Announcement.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Announcement deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getDepartments,
   createDepartment,
@@ -261,5 +293,8 @@ module.exports = {
   updateCompanyProfile,
   getDocuments,
   uploadDocument,
-  deleteDocument
+  deleteDocument,
+  getAnnouncements,
+  createAnnouncement,
+  deleteAnnouncement
 };

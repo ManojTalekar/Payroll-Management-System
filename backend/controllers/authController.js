@@ -1,33 +1,13 @@
 const User = require("../models/User");
 const Employee = require("../models/Employee");
 const ActivityLog = require("../models/ActivityLog");
-const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const { sendPasswordResetEmail } = require("../config/emailService");
-
-// Helper to sign JWT Access Token
-const generateAccessToken = (user) => {
-  if (!process.env.JWT_SECRET) {
-    console.error("Environment variable missing: JWT_SECRET is not defined in environment variables!");
-  }
-  return jwt.sign(
-    { id: user._id, email: user.email, role: user.role },
-    process.env.JWT_SECRET || "supersecretjwtkeyforhrms123!",
-    { expiresIn: "1h" }
-  );
-};
-
-// Helper to sign JWT Refresh Token
-const generateRefreshToken = (user) => {
-  if (!process.env.JWT_REFRESH_SECRET) {
-    console.error("Environment variable missing: JWT_REFRESH_SECRET is not defined in environment variables!");
-  }
-  return jwt.sign(
-    { id: user._id },
-    process.env.JWT_REFRESH_SECRET || "supersecretjwtrefreshkeyforhrms123!",
-    { expiresIn: "7d" }
-  );
-};
+const { sendPasswordResetEmail } = require("../services/emailService");
+const { 
+  generateAccessToken, 
+  generateRefreshToken, 
+  verifyRefreshToken 
+} = require("../utils/tokenHelper");
 
 // @desc    Authenticate user & get tokens
 // @route   POST /api/auth/login
@@ -59,13 +39,13 @@ const login = async (req, res, next) => {
 
     if (!user) {
       console.error(`Authentication failed: User not found for username/email: "${username}"`);
-      return res.status(401).json({ success: false, message: "User not found" });
+      return res.status(401).json({ success: false, message: "Invalid Email or Secret Password" });
     }
 
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       console.error(`Authentication failed: Password mismatch for user: "${username}"`);
-      return res.status(401).json({ success: false, message: "Password mismatch" });
+      return res.status(401).json({ success: false, message: "Invalid Email or Secret Password" });
     }
 
     // Generate tokens
@@ -112,7 +92,7 @@ const refresh = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET || "supersecretjwtrefreshkeyforhrms123!");
+    const decoded = verifyRefreshToken(refreshToken);
     const user = await User.findById(decoded.id);
 
     if (!user || user.refreshToken !== refreshToken) {
@@ -265,11 +245,37 @@ const getActivityLogs = async (req, res, next) => {
   }
 };
 
+// @desc    Logout user & invalidate refresh token
+// @route   POST /api/auth/logout
+// @access  Private
+const logout = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (user) {
+      user.refreshToken = undefined;
+      await user.save();
+    }
+
+    // Log Activity
+    await ActivityLog.create({
+      user: req.user.id,
+      action: "User logged out",
+      ipAddress: req.ip || req.headers["x-forwarded-for"] || "",
+      userAgent: req.headers["user-agent"] || ""
+    });
+
+    res.json({ success: true, message: "Successfully logged out" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   login,
   refresh,
   forgotPassword,
   resetPassword,
   changePassword,
-  getActivityLogs
+  getActivityLogs,
+  logout
 };

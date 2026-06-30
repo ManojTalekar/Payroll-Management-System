@@ -3,7 +3,7 @@ const Employee = require("../models/Employee");
 const Company = require("../models/Company");
 const User = require("../models/User");
 const Notification = require("../models/Notification");
-const { sendLeaveStatusEmail } = require("../config/emailService");
+const { sendLeaveStatusEmail } = require("../services/emailService");
 
 // @desc    Get all leave requests
 // @route   GET /api/leaves

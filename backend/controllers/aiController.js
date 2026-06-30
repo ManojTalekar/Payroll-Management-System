@@ -3,6 +3,7 @@ const Attendance = require("../models/Attendance");
 const Leave = require("../models/Leave");
 const Salary = require("../models/Salary");
 const Department = require("../models/Department");
+const { generateAIChatReply } = require("../services/geminiService");
 
 // @desc    AI Assistant Chatbot Responder targeting Google Gemini API
 // @route   POST /api/ai/chat
@@ -42,45 +43,7 @@ Please respond to the employee's message. Use Markdown formatting (bold, bullet 
 If they ask payroll, attendance, or policy questions, relate it back to the corporate metrics above.
 User Message: "${message}"`;
 
-    let replyText = "";
-    const apiKey = process.env.GEMINI_API_KEY;
-
-    if (apiKey && apiKey !== "dummy_api_key" && !apiKey.startsWith("YOUR_")) {
-      try {
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              contents: [
-                {
-                  parts: [
-                    {
-                      text: contextPrompt
-                    }
-                  ]
-                }
-              ]
-            })
-          }
-        );
-
-        if (response.ok) {
-          const json = await response.json();
-          if (json.candidates && json.candidates[0] && json.candidates[0].content && json.candidates[0].content.parts[0]) {
-            replyText = json.candidates[0].content.parts[0].text;
-          }
-        } else {
-          const errBody = await response.text();
-          console.error("Gemini API call failed with response error status:", response.status, errBody);
-        }
-      } catch (geminiErr) {
-        console.error("Gemini API request exception:", geminiErr.message);
-      }
-    }
+    let replyText = await generateAIChatReply(contextPrompt);
 
     // 2. Fallback to keyword heuristics if Gemini is not configured or failed
     if (!replyText) {

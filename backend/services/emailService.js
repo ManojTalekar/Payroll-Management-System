@@ -57,6 +57,7 @@ const sendEmail = async ({ to, subject, html, text }) => {
  * Trigger welcome onboarding email
  */
 const sendWelcomeEmail = async (employee) => {
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
       <h2 style="color: #0072ff; text-align: center;">Welcome to TechNova Solutions!</h2>
@@ -64,7 +65,7 @@ const sendWelcomeEmail = async (employee) => {
       <p>We are absolutely thrilled to welcome you to the TechNova corporate family. Your employee account is ready for access.</p>
       <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
         <p style="margin: 5px 0;"><strong>Employee ID:</strong> ${employee.employeeId}</p>
-        <p style="margin: 5px 0;"><strong>Corporate Portal Login:</strong> <a href="http://localhost:3000/login">Access Here</a></p>
+        <p style="margin: 5px 0;"><strong>Corporate Portal Login:</strong> <a href="${frontendUrl}/login">Access Here</a></p>
         <p style="margin: 5px 0;"><strong>Initial Account Password:</strong> 1234 (Please reset this upon first login)</p>
       </div>
       <p>If you have any questions, feel free to ask our <strong>AI HR Assistant</strong> or reach out to the HR department.</p>
@@ -83,7 +84,8 @@ const sendWelcomeEmail = async (employee) => {
  * Trigger password reset request token
  */
 const sendPasswordResetEmail = async (email, resetToken) => {
-  const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+  const resetUrl = `${frontendUrl}/reset-password/${resetToken}`;
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
       <h2 style="color: #ff5e62; text-align: center;">Reset Account Password</h2>
@@ -150,6 +152,7 @@ const sendLeaveStatusEmail = async (employee, leaveRequest) => {
  * Trigger monthly payslip email statement
  */
 const sendPayslipEmail = async (employee, salarySlip) => {
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const monthName = months[salarySlip.month - 1];
   const html = `
@@ -166,7 +169,7 @@ const sendPayslipEmail = async (employee, salarySlip) => {
         <p style="margin: 5px 0; color: red;"><strong>Tax & PF Deductions:</strong> ₹${(salarySlip.pf + salarySlip.esi + salarySlip.professionalTax + salarySlip.incomeTax).toLocaleString()}</p>
         <h3 style="margin: 10px 0 0 0; color: #28a745;">Net Credited Salary: ₹${salarySlip.netSalary.toLocaleString()}</h3>
       </div>
-      <p>You can view and download your full signed PDF payslip directly in the <a href="http://localhost:3000/employee-salary-slip">Employee Portal</a>.</p>
+      <p>You can view and download your full signed PDF payslip directly in the <a href="${frontendUrl}/employee-salary-slip">Employee Portal</a>.</p>
       <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 20px 0;" />
       <p style="font-size: 11px; color: #888888; text-align: center;">TechNova Finance & Payroll Department</p>
     </div>

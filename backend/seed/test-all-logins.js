@@ -55,28 +55,12 @@ const run = async () => {
     console.error("HR login test failed:", err);
   }
 
-  // Test 3: Manager
+  // Test 3: Employee
   try {
-    const res = await makeRequest("manager@technova.com", "1234");
-    console.log("Manager (manager@technova.com):", res.statusCode, res.body.success, res.body.user?.role || "no role");
+    const res = await makeRequest("employee@technova.com", "1234");
+    console.log("Employee (employee@technova.com):", res.statusCode, res.body.success, res.body.user?.role || "no role");
   } catch (err) {
-    console.error("Manager login test failed:", err);
-  }
-
-  // Test 4: Employee (Amit)
-  try {
-    const res = await makeRequest("amit.sharma@technova.com", "1234");
-    console.log("Employee (amit.sharma@technova.com):", res.statusCode, res.body.success, res.body.user?.role || "no role");
-  } catch (err) {
-    console.error("Employee (Amit) login test failed:", err);
-  }
-
-  // Test 5: Employee (Priya)
-  try {
-    const res = await makeRequest("priya.patel@technova.com", "1234");
-    console.log("Employee (priya.patel@technova.com):", res.statusCode, res.body.success, res.body.user?.role || "no role");
-  } catch (err) {
-    console.error("Employee (Priya) login test failed:", err);
+    console.error("Employee login test failed:", err);
   }
 };
 

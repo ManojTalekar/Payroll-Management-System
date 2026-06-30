@@ -7,8 +7,8 @@ const Attendance = require("../models/Attendance");
 const Leave = require("../models/Leave");
 const Salary = require("../models/Salary");
 const Document = require("../models/Document");
-const { uploadToCloudinary } = require("../middleware/uploadMiddleware");
-const { sendWelcomeEmail } = require("../config/emailService");
+const { uploadToCloudinary } = require("../services/cloudinaryService");
+const { sendWelcomeEmail } = require("../services/emailService");
 
 // @desc    Get all employees
 // @route   GET /api/employees

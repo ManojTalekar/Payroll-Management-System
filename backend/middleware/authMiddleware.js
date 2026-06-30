@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { verifyAccessToken } = require("../utils/tokenHelper");
 
 const protect = async (req, res, next) => {
   let token;
@@ -13,7 +13,7 @@ const protect = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "supersecretjwtkeyforhrms123!");
+    const decoded = verifyAccessToken(token);
     req.user = await User.findById(decoded.id).select("-password").populate("employeeRef");
     if (!req.user) {
       console.error("JWT Auth error: User no longer exists");
@@ -39,3 +39,4 @@ const authorize = (...roles) => {
 };
 
 module.exports = { protect, authorize };
+

@@ -6,7 +6,8 @@ const {
   getShifts, createShift, deleteShift,
   getHolidays, createHoliday, deleteHoliday,
   getCompanyProfile, updateCompanyProfile,
-  getDocuments, uploadDocument, deleteDocument
+  getDocuments, uploadDocument, deleteDocument,
+  getAnnouncements, createAnnouncement, deleteAnnouncement
 } = require("../controllers/hrController");
 const { protect, authorize } = require("../middleware/authMiddleware");
 const { upload } = require("../middleware/uploadMiddleware");
@@ -39,5 +40,10 @@ router.put("/company", protect, authorize("admin"), updateCompanyProfile);
 router.get("/documents", protect, getDocuments);
 router.post("/documents/upload", protect, upload.single("file"), uploadDocument);
 router.delete("/documents/:id", protect, deleteDocument);
+
+// Announcements
+router.get("/announcements", protect, getAnnouncements);
+router.post("/announcements", protect, authorize("admin", "hr"), createAnnouncement);
+router.delete("/announcements/:id", protect, authorize("admin", "hr"), deleteAnnouncement);
 
 module.exports = router;

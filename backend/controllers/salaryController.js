@@ -3,7 +3,7 @@ const Employee = require("../models/Employee");
 const Attendance = require("../models/Attendance");
 const User = require("../models/User");
 const Notification = require("../models/Notification");
-const { sendPayslipEmail } = require("../config/emailService");
+const { sendPayslipEmail } = require("../services/emailService");
 
 // @desc    Get salary history
 // @route   GET /api/salaries
