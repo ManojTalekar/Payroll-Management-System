@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { authAPI } from "../services/api";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -32,7 +33,12 @@ function Sidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await authAPI.logout();
+    } catch (err) {
+      console.error("Backend session logout failed:", err.message);
+    }
     localStorage.clear();
     navigate("/login");
   };

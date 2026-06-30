@@ -17,12 +17,22 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Intercept 401 errors to perform auto refresh token rotation
+// Intercept responses to handle auth errors, timeouts, network failures, etc.
 API.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response && error.response.status === 401 && !originalRequest._retry) {
+    
+    // Handle Network Errors or Timeouts
+    if (!error.response) {
+      console.error("Network or Timeout error occurred:", error.message);
+      return Promise.reject(new Error("Network connection lost or request timed out. Please check if the server is active."));
+    }
+
+    const { status } = error.response;
+
+    // Handle 401 Unauthorized (attempt token rotation)
+    if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         const refreshToken = localStorage.getItem("refreshToken");
@@ -47,6 +57,22 @@ API.interceptors.response.use(
         window.location.href = "/login";
       }
     }
+
+    // Handle 403 Forbidden
+    if (status === 403) {
+      console.error("Access Forbidden (403): You do not have permissions for this action.");
+    }
+
+    // Handle 404 Not Found
+    if (status === 404) {
+      console.warn("API Endpoint not found (404).");
+    }
+
+    // Handle 500 Server Error
+    if (status === 500) {
+      console.error("Internal Server Error (500). Please check backend logs.");
+    }
+
     return Promise.reject(error);
   }
 );
@@ -54,6 +80,7 @@ API.interceptors.response.use(
 // API endpoint abstraction bindings
 export const authAPI = {
   login: (username, password) => API.post("/auth/login", { username, password }),
+  logout: () => API.post("/auth/logout"),
   forgotPassword: (email) => API.post("/auth/forgot-password", { email }),
   resetPassword: (token, password) => API.post(`/auth/reset-password/${token}`, { password }),
   changePassword: (oldPassword, newPassword) => API.put("/auth/change-password", { oldPassword, newPassword }),
@@ -125,7 +152,12 @@ export const hrAPI = {
   uploadDocument: (formData) => API.post("/hr/documents/upload", formData, {
     headers: { "Content-Type": "multipart/form-data" }
   }),
-  deleteDocument: (id) => API.delete(`/hr/documents/${id}`)
+  deleteDocument: (id) => API.delete(`/hr/documents/${id}`),
+
+  // Announcements
+  getAnnouncements: () => API.get("/hr/announcements"),
+  createAnnouncement: (annData) => API.post("/hr/announcements", annData),
+  deleteAnnouncement: (id) => API.delete(`/hr/announcements/${id}`)
 };
 
 export const aiAPI = {

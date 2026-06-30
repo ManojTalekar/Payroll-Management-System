@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { employeeAPI, attendanceAPI, leaveAPI, salaryAPI } from "../services/api";
+import { employeeAPI, attendanceAPI, leaveAPI, salaryAPI, hrAPI } from "../services/api";
 import axios from "axios";
 import { motion } from "framer-motion";
 
@@ -24,6 +24,7 @@ function EmployeeDashboard() {
   const [leaveBalances, setLeaveBalances] = useState(null);
   const [salaries, setSalaries] = useState([]);
   const [notifications, setNotifications] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
   
   const [presentDays, setPresentDays] = useState(0);
   const [absentDays, setAbsentDays] = useState(0);
@@ -83,6 +84,14 @@ function EmployeeDashboard() {
         if (balRes.data.success) setLeaveBalances(balRes.data.balance);
         if (salRes.data.success) setSalaries(salRes.data.data);
         if (notifRes.data.success) setNotifications(notifRes.data.data);
+
+        // Fetch announcements
+        try {
+          const annRes = await hrAPI.getAnnouncements();
+          if (annRes.data.success) setAnnouncements(annRes.data.data);
+        } catch (annError) {
+          console.error("Failed to load announcements:", annError);
+        }
       }
     } catch (error) {
       console.error("Employee dashboard telemetry fetch failure:", error);
@@ -386,18 +395,26 @@ function EmployeeDashboard() {
                 borderRadius: "16px"
               }}>
                 <h6 className="fw-bold mb-3"><i className="bi bi-calendar3 text-info me-2"></i>Corporate Announcements & Holidays</h6>
-                <ul className="list-unstyled mb-0">
-                  <li className="mb-3">
-                    <span className="badge bg-danger me-2">Holiday</span>
-                    <strong className="small text-white">Independence Day - August 15th</strong>
-                    <p className="small text-muted m-0 mt-1">TechNova corporate offices will remain closed.</p>
-                  </li>
-                  <li>
-                    <span className="badge bg-warning text-dark me-2">Policy Update</span>
-                    <strong className="small text-white">New QR Attendance Check-in Active</strong>
-                    <p className="small text-muted m-0 mt-1">Please verify browser location permissions during daily check-in logs.</p>
-                  </li>
-                </ul>
+                <div style={{ maxHeight: "300px", overflowY: "auto" }}>
+                  <ul className="list-unstyled mb-0">
+                    {announcements.length === 0 ? (
+                      <p className="text-muted small text-center my-3">No active announcements</p>
+                    ) : (
+                      announcements.slice(0, 5).map((ann, idx) => (
+                        <li key={idx} className="mb-3">
+                          <span className={`badge me-2 ${
+                            ann.type === "Holiday" ? "bg-danger" : 
+                            ann.type === "Policy Update" ? "bg-warning text-dark" : 
+                            ann.type === "Event" ? "bg-primary" : "bg-secondary"
+                          }`}>{ann.type}</span>
+                          <strong className="small text-white">{ann.title}</strong>
+                          <p className="small text-muted m-0 mt-1">{ann.content}</p>
+                          <span className="text-muted" style={{ fontSize: "10px" }}>{new Date(ann.date || ann.createdAt).toLocaleDateString()}</span>
+                        </li>
+                      ))
+                    )}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

@@ -247,7 +247,7 @@ function Login() {
           <small className="text-light opacity-50 block fs-7">
             Demo Credentials:<br />
             Admin Portal → <span className="text-info font-monospace">admin@technova.com / 1234</span><br />
-            Employee → <span className="text-info font-monospace">amit.sharma@technova.com / 1234</span>
+            Employee → <span className="text-info font-monospace">employee@technova.com / 1234</span>
           </small>
         </div>
       </motion.div>

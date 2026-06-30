@@ -135,35 +135,36 @@ function EmployeeSalarySlip() {
                       </div>
                     </div>
 
-                    {/* Breakdown */}
-                    <table className="table table-bordered align-middle small">
-                      <thead className="table-dark">
-                        <tr>
-                          <th>Earnings & Allowances</th>
-                          <th>Deductions & Taxes</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div className="d-flex justify-content-between"><span>Basic Salary:</span> <strong>₹{selectedSlip.basicSalary.toLocaleString()}</strong></div>
-                            <div className="d-flex justify-content-between mt-1"><span>HRA (40%):</span> <strong>₹{selectedSlip.hra.toLocaleString()}</strong></div>
-                            <div className="d-flex justify-content-between mt-1"><span>DA (10%):</span> <strong>₹{selectedSlip.da.toLocaleString()}</strong></div>
-                            <div className="d-flex justify-content-between mt-1"><span>Overtime Pay:</span> <strong>₹{(selectedSlip.overtimePay || 0).toLocaleString()}</strong></div>
-                          </td>
-                          <td>
-                            <div className="d-flex justify-content-between"><span>PF (12%):</span> <strong className="text-danger">₹{selectedSlip.pf.toLocaleString()}</strong></div>
-                            <div className="d-flex justify-content-between mt-1"><span>ESI (1%):</span> <strong className="text-danger">₹{selectedSlip.esi.toLocaleString()}</strong></div>
-                            <div className="d-flex justify-content-between mt-1"><span>Professional Tax:</span> <strong className="text-danger">₹{selectedSlip.professionalTax.toLocaleString()}</strong></div>
-                            <div className="d-flex justify-content-between mt-1"><span>Income Tax:</span> <strong className="text-danger">₹{selectedSlip.incomeTax.toLocaleString()}</strong></div>
-                          </td>
-                        </tr>
-                        <tr className="table-secondary fw-bold">
-                          <td>Gross Total: ₹{(selectedSlip.basicSalary + selectedSlip.hra + selectedSlip.da + (selectedSlip.overtimePay || 0)).toLocaleString()}</td>
-                          <td>Deductions Total: ₹{(selectedSlip.pf + selectedSlip.esi + selectedSlip.professionalTax + selectedSlip.incomeTax).toLocaleString()}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div className="table-responsive">
+                      <table className="table table-bordered align-middle small">
+                        <thead className="table-dark">
+                          <tr>
+                            <th>Earnings & Allowances</th>
+                            <th>Deductions & Taxes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div className="d-flex justify-content-between"><span>Basic Salary:</span> <strong>₹{selectedSlip.basicSalary.toLocaleString()}</strong></div>
+                              <div className="d-flex justify-content-between mt-1"><span>HRA (40%):</span> <strong>₹{selectedSlip.hra.toLocaleString()}</strong></div>
+                              <div className="d-flex justify-content-between mt-1"><span>DA (10%):</span> <strong>₹{selectedSlip.da.toLocaleString()}</strong></div>
+                              <div className="d-flex justify-content-between mt-1"><span>Overtime Pay:</span> <strong>₹{(selectedSlip.overtimePay || 0).toLocaleString()}</strong></div>
+                            </td>
+                            <td>
+                              <div className="d-flex justify-content-between"><span>PF (12%):</span> <strong className="text-danger">₹{selectedSlip.pf.toLocaleString()}</strong></div>
+                              <div className="d-flex justify-content-between mt-1"><span>ESI (1%):</span> <strong className="text-danger">₹{selectedSlip.esi.toLocaleString()}</strong></div>
+                              <div className="d-flex justify-content-between mt-1"><span>Professional Tax:</span> <strong className="text-danger">₹{selectedSlip.professionalTax.toLocaleString()}</strong></div>
+                              <div className="d-flex justify-content-between mt-1"><span>Income Tax:</span> <strong className="text-danger">₹{selectedSlip.incomeTax.toLocaleString()}</strong></div>
+                            </td>
+                          </tr>
+                          <tr className="table-secondary fw-bold">
+                            <td>Gross Total: ₹{(selectedSlip.basicSalary + selectedSlip.hra + selectedSlip.da + (selectedSlip.overtimePay || 0)).toLocaleString()}</td>
+                            <td>Deductions Total: ₹{(selectedSlip.pf + selectedSlip.esi + selectedSlip.professionalTax + selectedSlip.incomeTax).toLocaleString()}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
 
                     <div className="bg-success bg-opacity-10 text-success p-3 text-center my-3 rounded" style={{ border: "1px solid rgba(40,167,69,0.2)" }}>
                       <span className="small text-uppercase fw-bold d-block text-muted">Net Credited Payout</span>
