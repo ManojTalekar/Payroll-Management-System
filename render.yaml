@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: hrms-payroll-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    rootDir: backend
+    envVars:
+      - key: PORT
+        value: 63389
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: CLOUDINARY_CLOUD_NAME
+        value: dummy_cloud
+      - key: CLOUDINARY_API_KEY
+        value: 123456789
+      - key: CLOUDINARY_API_SECRET
+        value: dummy_secret
+      - key: SMTP_HOST
+        value: smtp.mailtrap.io
+      - key: SMTP_PORT
+        value: 2525
+      - key: SMTP_USER
+        value: dummy_user
+      - key: SMTP_PASS
+        value: dummy_pass
+      - key: SMTP_FROM
+        value: noreply@technova.com
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
