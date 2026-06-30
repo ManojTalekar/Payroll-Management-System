@@ -58,7 +58,7 @@ function MyAttendance() {
   const handleSimulatedQRCheckIn = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const baseURL = process.env.REACT_APP_API_URL || "http://localhost:63389/api";
+      const baseURL = process.env.REACT_APP_API_URL || "http://localhost:10000/api";
       const res = await axios.post(
         `${baseURL}/attendance/check-in`,
         { latitude: OFFICE_LAT, longitude: OFFICE_LON, deviceType: "Mobile (QR)" },
@@ -105,11 +105,11 @@ function MyAttendance() {
               border: "1px solid rgba(0, 198, 255, 0.2)",
               borderRadius: "16px"
             }}>
-              <h5 className="fw-bold"><i className="bi bi-qr-code text-info me-2"></i>TechNova QR Check-In Terminal</h5>
+              <h5 className="fw-bold"><i className="bi bi-qr-code text-info me-2"></i>Payroll Pro QR Check-In Terminal</h5>
               <p className="text-muted small">Scan this dynamic code with your mobile app or click check-in to simulate scans within the DLF Cyber City radius bounds.</p>
               <div className="my-3 d-inline-block p-3 bg-white rounded" style={{ width: "fit-content", margin: "auto" }}>
                 {/* Simulated QR Code representation */}
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TechNova_CheckIn_LiveToken" alt="Checkin QR" />
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PayrollPro_CheckIn_LiveToken" alt="Checkin QR" />
               </div>
               <div>
                 <button className="btn btn-success fw-bold me-2" onClick={handleSimulatedQRCheckIn}>

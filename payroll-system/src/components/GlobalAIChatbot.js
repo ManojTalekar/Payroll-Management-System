@@ -14,7 +14,7 @@ function GlobalAIChatbot() {
       const greeting = {
         id: "G001",
         sender: "ai",
-        text: `Hello! I am your TechNova AI Assistant. Ask me anything about leaves, salaries, tax deductions, check-in schedules, or corporate dress code policies.`,
+        text: `Hello! I am your Payroll Pro AI Assistant. Ask me anything about leaves, salaries, tax deductions, check-in schedules, or corporate dress code policies.`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       const savedChat = JSON.parse(localStorage.getItem("hrms_global_chat")) || [greeting];
@@ -83,7 +83,7 @@ function GlobalAIChatbot() {
       const reset = [{
         id: "G001",
         sender: "ai",
-        text: `Hello! I am your TechNova AI Assistant. Ask me anything about leaves, salaries, tax deductions, check-in schedules, or corporate dress code policies.`,
+        text: `Hello! I am your Payroll Pro AI Assistant. Ask me anything about leaves, salaries, tax deductions, check-in schedules, or corporate dress code policies.`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }];
       saveChat(reset);
@@ -175,7 +175,7 @@ function GlobalAIChatbot() {
               <div className="d-flex align-items-center">
                 <i className="bi bi-cpu-fill text-info me-2 fs-5"></i>
                 <div>
-                  <h6 className="m-0 fw-bold">TechNova AI Helpdesk</h6>
+                  <h6 className="m-0 fw-bold">Payroll Pro AI Helpdesk</h6>
                   <small className="opacity-75" style={{ fontSize: "10px" }}>Active Support Bot</small>
                 </div>
               </div>

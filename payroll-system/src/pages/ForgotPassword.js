@@ -61,7 +61,7 @@ function ForgotPassword() {
       >
         <div className="text-center mb-4">
           <h3 className="fw-bold m-0"><i className="bi bi-shield-lock text-info me-2"></i>Forgot Password</h3>
-          <small className="text-light opacity-75">TechNova Account Access Recovery</small>
+          <small className="text-light opacity-75">Payroll Pro Account Access Recovery</small>
         </div>
 
         {errorMsg && (
@@ -86,7 +86,7 @@ function ForgotPassword() {
               <input
                 type="email"
                 className="form-control bg-transparent text-white border-start-0 border-secondary"
-                placeholder="name@technova.com"
+                placeholder="name@payrollpro.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ outline: "none", boxShadow: "none" }}

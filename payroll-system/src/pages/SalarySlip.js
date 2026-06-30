@@ -189,8 +189,8 @@ function SalarySlip() {
                     {/* Header */}
                     <div className="d-flex justify-content-between align-items-center pb-3 mb-3 border-bottom border-dark border-opacity-10">
                       <div>
-                        <h4 className="fw-bold m-0 text-primary"><i className="bi bi-cpu-fill me-1"></i>TECHNOVA SOLUTIONS</h4>
-                        <small className="text-muted">DLF Cyber City, Sector 24, Gurugram, India</small>
+                        <h4 className="fw-bold m-0 text-primary"><i className="bi bi-cpu-fill me-1"></i>PAYROLL PRO</h4>
+                        <small className="text-muted">Thane, Maharashtra, India</small>
                       </div>
                       <div className="text-end">
                         <span className="badge bg-dark text-white px-3 py-2">PAYSLIP LEDGER</span>
@@ -258,7 +258,7 @@ function SalarySlip() {
                         <span className="d-block text-muted" style={{ fontSize: "8px" }}>Scan to verify audit ID</span>
                       </div>
                       <div className="col-6 text-end small">
-                        <div className="fst-italic fw-bold text-dark mb-1">TechNova HR Signature</div>
+                        <div className="fst-italic fw-bold text-dark mb-1">Payroll Pro HR Signature</div>
                         <span className="d-block text-muted" style={{ fontSize: "10px" }}>Authorized Digital Signatory</span>
                       </div>
                     </div>

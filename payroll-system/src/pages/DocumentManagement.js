@@ -119,7 +119,7 @@ function DocumentManagement() {
       department: emp.department?.name || "Corporate Dept",
       joiningDate: emp.joiningDate ? new Date(emp.joiningDate).toLocaleDateString() : "2024-01-01",
       salary: emp.salary || "50000",
-      company: "TechNova Solutions Pvt Ltd",
+      company: "Payroll Pro",
       currentDate: new Date().toLocaleDateString()
     });
   };
@@ -197,7 +197,7 @@ function DocumentManagement() {
                               <small className="text-truncate text-muted" style={{ maxWidth: "200px" }}>{doc.name}</small>
                               <div>
                                 <a 
-                                  href={doc.fileUrl.startsWith("http") ? doc.fileUrl : `${(process.env.REACT_APP_API_URL || "http://localhost:63389/api").replace("/api", "")}${doc.fileUrl}`} 
+                                  href={doc.fileUrl.startsWith("http") ? doc.fileUrl : `${(process.env.REACT_APP_API_URL || "http://localhost:10000/api").replace("/api", "")}${doc.fileUrl}`} 
                                   target="_blank" 
                                   rel="noopener noreferrer" 
                                   className="btn btn-outline-primary btn-sm me-2"
@@ -280,7 +280,7 @@ function DocumentManagement() {
                         </p>
                         <p className="mt-4">Authorized HR Officer Signatory,</p>
                         <div className="d-flex justify-content-between align-items-end mt-2">
-                          <span className="text-decoration-underline font-monospace text-muted">TechNova Human Resources</span>
+                          <span className="text-decoration-underline font-monospace text-muted">Payroll Pro Human Resources</span>
                           <button className="btn btn-sm btn-outline-secondary" onClick={() => window.print()}>
                             <i className="bi bi-printer me-1"></i>Print Letter
                           </button>
@@ -300,7 +300,7 @@ function DocumentManagement() {
                         </p>
                         <p className="mt-4">Chief Corporate Administrator,</p>
                         <div className="d-flex justify-content-between align-items-end mt-2">
-                          <span className="text-decoration-underline font-monospace text-muted">TechNova Corporate Seal</span>
+                          <span className="text-decoration-underline font-monospace text-muted">Payroll Pro Corporate Seal</span>
                           <button className="btn btn-sm btn-outline-secondary" onClick={() => window.print()}>
                             <i className="bi bi-printer me-1"></i>Print Certificate
                           </button>

@@ -172,7 +172,7 @@ function Recruitment() {
           jobTitle: cand.jobTitle,
           salary: offerSalary,
           joiningDate: offerJoiningDate,
-          company: "TechNova Solutions Pvt Ltd"
+          company: "Payroll Pro"
         };
         setSelectedOfferLetter(generated);
 

@@ -39,7 +39,7 @@ function EmployeeDashboard() {
   const OFFICE_LON = 77.089;
 
   const quotes = [
-    "Your hard work shapes the future of TechNova solutions.",
+    "Your hard work shapes the future of Payroll Pro.",
     "Small daily improvements over time lead to stunning results.",
     "Quality is not an act, it is a habit.",
     "Excellence is the gradual result of always striving to do better."
@@ -62,7 +62,7 @@ function EmployeeDashboard() {
 
         // Fetch notifications directly from our new route
         const token = localStorage.getItem("accessToken");
-        const baseURL = process.env.REACT_APP_API_URL || "http://localhost:63389/api";
+        const baseURL = process.env.REACT_APP_API_URL || "http://localhost:10000/api";
         const notifRes = await axios.get(`${baseURL}/notifications`, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -120,7 +120,7 @@ function EmployeeDashboard() {
 
           const token = localStorage.getItem("accessToken");
           const endpoint = actionType === "in" ? "/attendance/check-in" : "/attendance/check-out";
-          const baseURL = process.env.REACT_APP_API_URL || "http://localhost:63389/api";
+          const baseURL = process.env.REACT_APP_API_URL || "http://localhost:10000/api";
           
           const res = await axios.post(
             `${baseURL}${endpoint}`,
@@ -140,7 +140,7 @@ function EmployeeDashboard() {
           // Proceed with fallback mock coordinates
           const token = localStorage.getItem("accessToken");
           const endpoint = actionType === "in" ? "/attendance/check-in" : "/attendance/check-out";
-          const baseURL = process.env.REACT_APP_API_URL || "http://localhost:63389/api";
+          const baseURL = process.env.REACT_APP_API_URL || "http://localhost:10000/api";
           const res = await axios.post(
             `${baseURL}${endpoint}`,
             { latitude: OFFICE_LAT, longitude: OFFICE_LON, deviceType: "Web" },

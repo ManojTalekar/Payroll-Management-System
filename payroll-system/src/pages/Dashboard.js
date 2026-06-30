@@ -39,7 +39,7 @@ function Dashboard() {
   const [time, setTime] = useState(new Date());
 
   // Weather states
-  const [weather] = useState({ temp: 32, city: "Gurugram", cond: "Sunny" });
+  const [weather] = useState({ temp: 32, city: "Thane", cond: "Sunny" });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +51,7 @@ function Dashboard() {
           leaveAPI.getLeaves(),
           salaryAPI.getSalaries()
         ]);
-        
+
         if (empRes.data.success) setEmployees(empRes.data.data);
         if (attRes.data.success) setAttendance(attRes.data.data);
         if (aiRes.data.success) setAnalytics(aiRes.data.data);
@@ -163,15 +163,15 @@ function Dashboard() {
   return (
     <>
       <Sidebar />
-      <div className="main-content" style={{ 
-        fontFamily: "'Outfit', sans-serif", 
-        background: "#0d131a", 
-        minHeight: "100vh", 
+      <div className="main-content" style={{
+        fontFamily: "'Outfit', sans-serif",
+        background: "#0d131a",
+        minHeight: "100vh",
         color: "#fff",
-        paddingBottom: "40px" 
+        paddingBottom: "40px"
       }}>
         <div className="container-fluid px-4">
-          
+
           {/* TOP NAV BAR INFO */}
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center my-4 p-3 rounded" style={{
             background: "rgba(255, 255, 255, 0.03)",

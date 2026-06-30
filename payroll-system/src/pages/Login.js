@@ -80,18 +80,8 @@ function Login() {
         }
       }
     } catch (err) {
-      console.error("Authentication failed. Detailed error details below:");
-      console.error("Error Object:", err);
-      const exactError = err.response?.data?.message || err.message || "Network Error";
-      console.error("Exact Failure Reason:", exactError);
-
-      if (err.message === "Network Error" || !err.response) {
-        const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:63389/api";
-        console.error(`API URL incorrect or backend unreachable. Attempted URL: ${apiUrl}`);
-        setErrorMsg(`API URL incorrect or backend unreachable (${apiUrl})`);
-      } else {
-        setErrorMsg(exactError);
-      }
+      console.error(err);
+      setErrorMsg(err.response?.data?.message || err.message || "Network Error");
     } finally {
       setLoading(false);
     }
@@ -127,9 +117,9 @@ function Login() {
       >
         <div className="text-center mb-4">
           <h2 className="fw-bold m-0" style={{ letterSpacing: "1.5px" }}>
-            TECH<span className="text-info">NOVA</span>
+            PAYROLL <span className="text-info">PRO</span>
           </h2>
-          <small className="text-light opacity-75">Enterprise Operations Login</small>
+          <small className="text-light opacity-75">Smart Payroll Solution</small>
         </div>
 
         {errorMsg && (
@@ -149,7 +139,7 @@ function Login() {
               <input
                 type="text"
                 className={`form-control bg-transparent text-white border-start-0 border-secondary ${errors.username ? "is-invalid" : ""}`}
-                placeholder="name@technova.com or 'admin'"
+                placeholder="name@payrollpro.com or 'admin'"
                 {...register("username", { required: "Username is required" })}
                 style={{ outline: "none", boxShadow: "none" }}
               />
@@ -246,8 +236,9 @@ function Login() {
         <div className="text-center mt-4">
           <small className="text-light opacity-50 block fs-7">
             Demo Credentials:<br />
-            Admin Portal → <span className="text-info font-monospace">admin@technova.com / 1234</span><br />
-            Employee → <span className="text-info font-monospace">employee@technova.com / 1234</span>
+            Admin Portal → <span className="text-info font-monospace">admin@payrollpro.com / 1234</span><br />
+            HR Portal → <span className="text-info font-monospace">hr@payrollpro.com / 1234</span><br />
+            Employee → <span className="text-info font-monospace">employee@payrollpro.com / 1234</span>
           </small>
         </div>
       </motion.div>

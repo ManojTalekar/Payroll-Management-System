@@ -76,7 +76,7 @@ function Profile() {
                   <div className="mb-3">
                     <i className="bi bi-envelope-fill text-primary me-2"></i>
                     <strong>Corporate Email:</strong>
-                    <div className="text-muted small">{profile?.email || "admin@technova.com"}</div>
+                    <div className="text-muted small">{profile?.email || "admin@payrollpro.com"}</div>
                   </div>
                   <div className="mb-3">
                     <i className="bi bi-building text-success me-2"></i>

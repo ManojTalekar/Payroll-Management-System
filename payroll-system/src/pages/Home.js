@@ -49,7 +49,7 @@ function Home() {
         <div className="container">
           <span className="navbar-brand fw-bold fs-4 d-flex align-items-center">
             <i className="bi bi-cpu-fill text-info me-2"></i>
-            TECH<span className="text-info">NOVA</span>
+            PAYROLL <span className="text-info">PRO</span>
           </span>
           <div className="ms-auto d-flex align-items-center gap-3">
             <a href="#features" className="text-light text-decoration-none small d-none d-md-inline opacity-75 hover-opacity-100">Features</a>
@@ -90,7 +90,7 @@ function Home() {
               </span>
             </h1>
             <p className="text-muted fs-5 mb-4" style={{ lineHeight: "1.7" }}>
-              Empower your corporate ecosystem with TechNova. Streamline attendance logs, automate complex tax payouts, track leave workflows, verify official credentials, and run AI predictive insights.
+              Empower your corporate ecosystem with Payroll Pro. Streamline attendance logs, automate complex tax payouts, track leave workflows, verify official credentials, and run AI predictive insights.
             </p>
             <div className="d-flex gap-3">
               <Link to="/login" className="btn btn-primary btn-lg fw-bold px-4 py-3 shadow-lg" style={{
@@ -124,7 +124,7 @@ function Home() {
               }}></div>
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
-                alt="TechNova HRMS Dashboard illustration"
+                alt="Payroll Pro Dashboard illustration"
                 className="img-fluid rounded-4 shadow-2xl border"
                 style={{
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -281,7 +281,7 @@ function Home() {
           <div className="row g-4">
             <div className="col-md-6">
               <div className="p-4 rounded shadow-sm bg-white bg-opacity-5 border border-white border-opacity-5">
-                <p className="fst-italic text-muted">"Migrating our operations to TechNova reduced manual payroll validation times from days to a few seconds. The dynamic tax deduction calculations work flawlessly."</p>
+                <p className="fst-italic text-muted">"Migrating our operations to Payroll Pro reduced manual payroll validation times from days to a few seconds. The dynamic tax deduction calculations work flawlessly."</p>
                 <div className="d-flex align-items-center mt-3">
                   <i className="bi bi-person-circle fs-3 text-info me-2"></i>
                   <div>
@@ -344,9 +344,10 @@ function Home() {
             <h2 className="fw-bold mb-3">Initiate Integration</h2>
             <p className="text-muted">Ready to upgrade your enterprise operations? Fill out the inquiry sheet, and our integration team will set up your database.</p>
             <div className="mt-4">
-              <p className="small mb-2"><i className="bi bi-geo-alt-fill text-info me-2"></i> Cyber City Phase II, Sector 24, Gurugram</p>
-              <p className="small mb-2"><i className="bi bi-telephone-fill text-info me-2"></i> +91 124 4920400</p>
-              <p className="small"><i className="bi bi-envelope-fill text-info me-2"></i> support@technova.com</p>
+              <p className="small mb-2"><i className="bi bi-geo-alt-fill text-info me-2"></i> Thane, Maharashtra, India</p>
+              <p className="small mb-2"><i className="bi bi-telephone-fill text-info me-2"></i> +91 XXXXXXXXXX</p>
+              <p className="small mb-2"><i className="bi bi-envelope-fill text-info me-2"></i> manojtalekar29@gmail.com</p>
+              <p className="small"><i className="bi bi-person-fill text-info me-2"></i> Developer: Manoj Talekar</p>
             </div>
           </div>
 
@@ -396,8 +397,9 @@ function Home() {
 
       {/* FOOTER */}
       <footer className="py-4 border-top border-secondary border-opacity-10 text-center text-muted small bg-black bg-opacity-20">
-        <p className="m-0">&copy; 2026 TechNova Solutions Pvt Ltd. All rights reserved.</p>
-        <small className="opacity-50 mt-1 d-block">Authorized corporate access only. Node servers active.</small>
+        <p className="m-0">&copy; 2026 Manoj Talekar. All Rights Reserved.</p>
+        <p className="m-0 mt-1">Email: manojtalekar29@gmail.com | Location: Thane, Maharashtra, India</p>
+        <p className="m-0 mt-1">Designed & Developed by Manoj Talekar</p>
       </footer>
     </div>
   );

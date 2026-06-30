@@ -66,7 +66,7 @@ function Sidebar() {
       {isMobileScreen && (
         <div className="d-flex align-items-center justify-content-between px-3 py-2 text-white bg-dark position-fixed w-100 top-0 start-0" style={{ zIndex: 1050, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <span className="fw-bold d-flex align-items-center" style={{ fontSize: "16px" }}>
-            <i className="bi bi-cpu-fill text-info me-2"></i> TECHNOVA
+            <i className="bi bi-cpu-fill text-info me-2"></i> PAYROLL PRO
           </span>
           <button className="btn btn-outline-light border-0" onClick={() => setIsMobileOpen(!isMobileOpen)}>
             <i className={`bi ${isMobileOpen ? "bi-x-lg" : "bi-list"} fs-3`}></i>
@@ -111,7 +111,7 @@ function Sidebar() {
         <div className="text-center mb-4 mt-4 mt-lg-2 border-bottom border-secondary border-opacity-25 pb-3">
           <h5 className="fw-bold m-0 d-flex align-items-center justify-content-center">
             <i className="bi bi-cpu-fill text-info me-2 fs-4"></i>
-            TECH<span className="text-info">NOVA</span>
+            PAYROLL <span className="text-info">PRO</span>
           </h5>
           <small className="text-muted text-uppercase tracking-wider" style={{ fontSize: "9px" }}>
             HR & Payroll Portal

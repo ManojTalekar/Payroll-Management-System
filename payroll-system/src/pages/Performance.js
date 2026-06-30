@@ -114,7 +114,7 @@ function Performance() {
       department: emp.department?.name || "Corporate Department",
       rewardName: perf.reward,
       date: new Date(perf.updatedAt || new Date()).toLocaleDateString(),
-      company: "TechNova Solutions Pvt Ltd"
+      company: "Payroll Pro"
     });
     setShowCertificate(true);
   };

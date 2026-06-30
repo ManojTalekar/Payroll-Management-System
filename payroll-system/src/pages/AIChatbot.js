@@ -15,7 +15,7 @@ function AIChatbot() {
     const greeting = {
       id: "M001",
       sender: "ai",
-      text: `Hello! I am your TechNova AI Assistant. How can I assist you today? You can query me on 'employee counts', 'monthly payroll budget details', 'active leaves', or general 'company office policies'.`,
+      text: `Hello! I am your Payroll Pro AI Assistant. How can I assist you today? You can query me on 'employee counts', 'monthly payroll budget details', 'active leaves', or general 'company office policies'.`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
     
@@ -84,7 +84,7 @@ function AIChatbot() {
       const resetGreeting = [{
         id: "M001",
         sender: "ai",
-        text: `Hello! I am your TechNova AI Assistant. How can I assist you today? You can query me on 'employee counts', 'monthly payroll budget details', 'active leaves', or general 'company office policies'.`,
+        text: `Hello! I am your Payroll Pro AI Assistant. How can I assist you today? You can query me on 'employee counts', 'monthly payroll budget details', 'active leaves', or general 'company office policies'.`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }];
       saveChat(resetGreeting);
@@ -118,7 +118,7 @@ function AIChatbot() {
                       <span className="position-absolute bottom-0 end-0 bg-success border border-white rounded-circle p-1" style={{ width: "10px", height: "10px" }}></span>
                     </div>
                     <div>
-                      <h6 className="m-0 fw-bold">TechNova AI Bot</h6>
+                      <h6 className="m-0 fw-bold">Payroll Pro AI Bot</h6>
                       <small className="text-light" style={{ fontSize: "10px" }}>Model Inferences Live</small>
                     </div>
                   </div>

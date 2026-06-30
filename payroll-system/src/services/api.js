@@ -22,7 +22,7 @@ API.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    
+
     // Handle Network Errors or Timeouts
     if (!error.response) {
       console.error("Network or Timeout error occurred:", error.message);
@@ -47,7 +47,7 @@ API.interceptors.response.use(
           const { accessToken, refreshToken: newRefresh } = res.data;
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem("refreshToken", newRefresh);
-          
+
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
           return API(originalRequest);
         }
@@ -88,7 +88,7 @@ export const authAPI = {
 };
 
 export const employeeAPI = {
-  getEmployees: (search = "", department = "") => 
+  getEmployees: (search = "", department = "") =>
     API.get(`/employees?search=${search}&department=${department}`),
   getEmployeeById: (id) => API.get(`/employees/${id}`),
   createEmployee: (formData) => API.post("/employees", formData, {
@@ -102,7 +102,7 @@ export const employeeAPI = {
 };
 
 export const attendanceAPI = {
-  getAttendance: (employeeId = "", month = "", year = "") => 
+  getAttendance: (employeeId = "", month = "", year = "") =>
     API.get(`/attendance?employeeId=${employeeId}&month=${month}&year=${year}`),
   checkIn: () => API.post("/attendance/check-in"),
   checkOut: () => API.post("/attendance/check-out")
@@ -116,7 +116,7 @@ export const leaveAPI = {
 };
 
 export const salaryAPI = {
-  getSalaries: (employeeId = "", month = "", year = "") => 
+  getSalaries: (employeeId = "", month = "", year = "") =>
     API.get(`/salaries?employeeId=${employeeId}&month=${month}&year=${year}`),
   generatePayroll: (month, year) => API.post("/salaries/generate", { month, year }),
   updateSalaryStatus: (id, status) => API.put(`/salaries/${id}/status`, { status })
@@ -127,7 +127,7 @@ export const hrAPI = {
   getDepartments: () => API.get("/hr/departments"),
   createDepartment: (deptData) => API.post("/hr/departments", deptData),
   deleteDepartment: (id) => API.delete(`/hr/departments/${id}`),
-  
+
   // Designations
   getDesignations: () => API.get("/hr/designations"),
   createDesignation: (desData) => API.post("/hr/designations", desData),

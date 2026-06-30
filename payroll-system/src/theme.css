@@ -1,0 +1,55 @@
+/* src/theme.css */
+
+/* Light theme variables (default) */
+:root {
+  --bg: #ffffff;                         /* Page background */
+  --text-primary: #212529;               /* Primary text */
+  --text-secondary: #555555;             /* Secondary text */
+  --accent: #0066ff;                     /* Blue accent */
+  --card-bg: #ffffff;                    /* Card background */
+  --card-border: #e0e0e0;                /* Card border */
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Soft shadow */
+  --sidebar-bg: #ffffff;                /* Sidebar background */
+  --sidebar-text: #212529;               /* Sidebar text */
+  --navbar-bg: #ffffff;                 /* Navbar background */
+  --modal-bg: #ffffff;                  /* Modal background */
+  --modal-border: #e0e0e0;              /* Modal border */
+  --dropdown-bg: #ffffff;               /* Dropdown background */
+  --dropdown-border: #e0e0e0;           /* Dropdown border */
+  --table-bg: #ffffff;                  /* Table background */
+  --table-border: #e0e0e0;              /* Table border */
+  --input-bg: #ffffff;                  /* Input background */
+  --input-border: #ced4da;              /* Input border */
+  --input-text: #212529;                /* Input text */
+  --button-bg: var(--accent);           /* Primary button background */
+  --button-text: #ffffff;               /* Primary button text */
+  --button-border: transparent;
+  --calendar-bg: #ffffff;               /* Calendar card background */
+}
+
+/* Dark theme overrides – activated by adding .dark to <body> */
+.dark {
+  --bg: #121212;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --accent: #66b2ff;
+  --card-bg: #1e1e1e;
+  --card-border: #333333;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  --sidebar-bg: #0f2027; /* matches existing gradient start */
+  --sidebar-text: #ffffff;
+  --navbar-bg: #0f2027;
+  --modal-bg: #1e1e1e;
+  --modal-border: #444444;
+  --dropdown-bg: #1e1e1e;
+  --dropdown-border: #444444;
+  --table-bg: #1e1e1e;
+  --table-border: #444444;
+  --input-bg: #2c2c2c;
+  --input-border: #555555;
+  --input-text: #e0e0e0;
+  --button-bg: var(--accent);
+  --button-text: #ffffff;
+  --button-border: transparent;
+  --calendar-bg: #1e1e1e;
+}

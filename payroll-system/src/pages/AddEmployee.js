@@ -190,7 +190,7 @@ function AddEmployee() {
                     </div>
                     <div className="col-md-6">
                       <label className="form-label small fw-bold">Corporate Email *</label>
-                      <input type="email" className="form-control bg-transparent text-white border-secondary" placeholder="rahul@technova.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <input type="email" className="form-control bg-transparent text-white border-secondary" placeholder="rahul@payrollpro.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                     <div className="col-md-6">
                       <label className="form-label small fw-bold">Contact Phone</label>

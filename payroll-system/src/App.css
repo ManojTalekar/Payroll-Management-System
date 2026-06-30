@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #eef2f7, #ffffff);
+  background: var(--bg);
   overflow-x: hidden;
   transition: background 0.3s ease;
 }
@@ -13,7 +13,7 @@ body {
 .sidebar-container {
   width: 260px;
   height: 100vh;
-  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  background: var(--sidebar-bg);
   padding: 20px;
   position: fixed;
   top: 0;
@@ -89,23 +89,15 @@ body {
 
 .stat-card {
   border-radius: 12px;
-  color: white;
+  color: var(--text-primary);
+  background: var(--accent);
 }
 
-.stat-card-blue {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
-}
-
-.stat-card-green {
-  background: linear-gradient(135deg, #11998e, #38ef7d);
-}
-
-.stat-card-purple {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-}
-
+.stat-card-blue,
+.stat-card-green,
+.stat-card-purple,
 .stat-card-dark {
-  background: linear-gradient(135deg, #6aa7c6, #414345);
+  background: var(--accent);
 }
 
 .stat-title {

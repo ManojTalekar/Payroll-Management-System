@@ -1,0 +1,73 @@
+/* src/theme-override.css */
+
+/* Card styling for light mode */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+/* Stat cards – use accent for primary visual cue */
+.stat-card {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+}
+
+.stat-card-blue {
+  background: var(--accent);
+  color: var(--button-text);
+}
+
+.stat-card-green {
+  background: var(--accent);
+  color: var(--button-text);
+}
+
+.stat-card-purple {
+  background: var(--accent);
+  color: var(--button-text);
+}
+
+.stat-card-dark {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Calendar card */
+.calendar-card {
+  background: var(--calendar-bg);
+}
+
+/* Ensure tables use variable colors */
+.table {
+  background: var(--table-bg);
+  color: var(--text-primary);
+}
+
+/* Modal content */
+.modal-content {
+  background: var(--modal-bg);
+  border: 1px solid var(--modal-border);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+}
+
+/* Form controls (inputs, selects) */
+.form-control,
+.form-select {
+  background: var(--input-bg);
+  color: var(--input-text);
+  border-color: var(--input-border);
+}
+
+/* Primary button */
+.btn-primary {
+  background: var(--accent);
+  color: var(--button-text);
+  border: var(--button-border);
+}
